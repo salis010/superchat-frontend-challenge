@@ -43,6 +43,41 @@ export const LinkCreator: React.FunctionComponent = () => {
                         onChange={handleChange}
                     />
                 </FieldWrapper>
+                <FieldWrapper>
+                    <Label text="Repo" />
+                    <input
+                        id="repo"
+                        value={linkParams.owner}
+                        onChange={handleChange}
+                    />
+                </FieldWrapper>
+                <FieldWrapper>
+                    <Label text="GitHub icon" />
+                    <input
+                        id="githubIcon"
+                        checked={linkParams.githubIcon}
+                        onChange={handleChange}
+                        type="checkbox"
+                    />
+                </FieldWrapper>
+                <FieldWrapper>
+                    <Label text="Text color" />
+                    <input
+                        type="color"
+                        id="color"
+                        value={linkParams.color}
+                        onChange={handleChange}
+                    />
+                </FieldWrapper>
+                <FieldWrapper>
+                    <Label text="Background color" />
+                    <input
+                        type="color"
+                        id="backgroundColor"
+                        value={linkParams.backgroundColor}
+                        onChange={handleChange}
+                    />
+                </FieldWrapper>
             </form>
         </PageWrapper>
     )

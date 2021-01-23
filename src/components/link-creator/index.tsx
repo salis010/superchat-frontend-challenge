@@ -1,16 +1,16 @@
 import React, { useState } from "react"
-import { PageWrapper, FieldWrapper } from "../common/elements"
+import { PageWrapper, FieldWrapper, H2 } from "../common/elements"
 import { PageTitle } from "../common/page-title"
 import { Label } from "../common/label"
 import { Link } from "../common/link"
-import styled from "@emotion/styled"
+import { Card } from "../card/index"
 
 export const LinkCreator: React.FunctionComponent = () => {
     const INVALID_URL = "Input valid 'Repo Owner' and 'Owner'"
 
     const [linkParams, setLinkParams] = useState({
-        owner: "",
-        repo: "",
+        owner: "salis010",
+        repo: "bingo",
         githubIcon: false,
         color: "#000000",
         backgroundColor: "#FFFFFF",
@@ -95,10 +95,37 @@ export const LinkCreator: React.FunctionComponent = () => {
                         onChange={handleOnChange}
                     />
                 </FieldWrapper>
+                <FieldWrapper>
+                    <Label text="Button size" />
+                    <select
+                        id="buttonSize"
+                        value={linkParams.buttonSize}
+                        onChange={handleOnChange}
+                    >
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </FieldWrapper>
 
                 <Label text="Link" />
                 <Link url={link.url} isValidUrl={link.isValidUrl} />
             </form>
+            {link.isValidUrl && (
+                <>
+                    <H2>Card Preview</H2>
+                    <Card
+                        repo={linkParams.repo}
+                        owner={linkParams.owner}
+                        githubIcon={linkParams.githubIcon}
+                        description="To be provided"
+                        stars={666}
+                        buttonSize={linkParams.buttonSize}
+                        color={linkParams.color}
+                        backgroundColor={linkParams.backgroundColor}
+                    />
+                </>
+            )}
         </PageWrapper>
     )
 }

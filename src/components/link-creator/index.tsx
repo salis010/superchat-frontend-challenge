@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { PageWrapper } from "../common/elements"
+import { PageWrapper, FieldWrapper } from "../common/elements"
 import { PageTitle } from "../common/page-title"
 import { Label } from "../common/label"
 import styled from "@emotion/styled"
@@ -22,7 +22,9 @@ export const LinkCreator: React.FunctionComponent = () => {
         <PageWrapper>
             <PageTitle text="Link Creator" />
             <form>
-                <Label text="Repo Owner" />
+                <FieldWrapper>
+                    <Label text="Repo Owner" />
+                </FieldWrapper>
             </form>
         </PageWrapper>
     )

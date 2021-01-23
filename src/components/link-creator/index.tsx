@@ -18,12 +18,30 @@ export const LinkCreator: React.FunctionComponent = () => {
         buttonSize: "small",
     })
 
+    const handleChange = (event) => {
+        console.log(event.target.value)
+        const value =
+            event.target.type === "checkbox"
+                ? event.target.checked
+                : event.target.value
+
+        return setLinkParams({
+            ...linkParams,
+            [event.target.id]: value,
+        })
+    }
+
     return (
         <PageWrapper>
             <PageTitle text="Link Creator" />
             <form>
                 <FieldWrapper>
                     <Label text="Repo Owner" />
+                    <input
+                        id="owner"
+                        value={linkParams.owner}
+                        onChange={handleChange}
+                    />
                 </FieldWrapper>
             </form>
         </PageWrapper>

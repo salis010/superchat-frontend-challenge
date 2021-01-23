@@ -2,6 +2,7 @@ export interface ITheme {
     colors: {
         white: string,
         primary: string,
+        text: string
     },
     dimensions: {
         radius: string,
@@ -15,7 +16,8 @@ export interface ITheme {
 export const theme: ITheme = {
     colors: {
         white: "RGB(250, 250, 250)",
-        primary: "RGB(200, 150, 150)",
+        primary: "RGB(150, 150, 150)",
+        text: "RGB(70, 70, 70)"
     },    
     dimensions: {
         radius: "20px",

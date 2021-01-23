@@ -5,11 +5,9 @@ import { Label } from "../common/label"
 import { Link } from "../common/link"
 import styled from "@emotion/styled"
 
-const H1 = styled.h1`
-    color: red;
-`
-
 export const LinkCreator: React.FunctionComponent = () => {
+    const INVALID_URL = "Input valid 'Repo Owner' and 'Owner'"
+
     const [linkParams, setLinkParams] = useState({
         owner: "",
         repo: "",
@@ -19,12 +17,11 @@ export const LinkCreator: React.FunctionComponent = () => {
         buttonSize: "small",
     })
     const [link, setLink] = useState({
-        url: "Input valid 'Repo Owner' and 'Owner'",
+        url: INVALID_URL,
         isValidUrl: false,
     })
 
-    const handleChange = (event) => {
-        console.log(event.target.value)
+    const handleOnChange = (event) => {
         const value =
             event.target.type === "checkbox"
                 ? event.target.checked
@@ -36,6 +33,19 @@ export const LinkCreator: React.FunctionComponent = () => {
         })
     }
 
+    const handleOnBlur = () => {
+        if (linkParams.owner && linkParams.repo) {
+            const url = `https://api.github.com/repos/${linkParams.owner}/${linkParams.repo}`
+            fetch(url).then((response) => {
+                if (response.status == 200) {
+                    setLink({ url, isValidUrl: true })
+                } else {
+                    setLink({ url: INVALID_URL, isValidUrl: false })
+                }
+            })
+        }
+    }
+
     return (
         <PageWrapper>
             <PageTitle text="Link Creator" />
@@ -45,15 +55,17 @@ export const LinkCreator: React.FunctionComponent = () => {
                     <input
                         id="owner"
                         value={linkParams.owner}
-                        onChange={handleChange}
+                        onChange={handleOnChange}
+                        onBlur={handleOnBlur}
                     />
                 </FieldWrapper>
                 <FieldWrapper>
                     <Label text="Repo" />
                     <input
                         id="repo"
-                        value={linkParams.owner}
-                        onChange={handleChange}
+                        value={linkParams.repo}
+                        onChange={handleOnChange}
+                        onBlur={handleOnBlur}
                     />
                 </FieldWrapper>
                 <FieldWrapper>
@@ -61,7 +73,7 @@ export const LinkCreator: React.FunctionComponent = () => {
                     <input
                         id="githubIcon"
                         checked={linkParams.githubIcon}
-                        onChange={handleChange}
+                        onChange={handleOnChange}
                         type="checkbox"
                     />
                 </FieldWrapper>
@@ -71,7 +83,7 @@ export const LinkCreator: React.FunctionComponent = () => {
                         type="color"
                         id="color"
                         value={linkParams.color}
-                        onChange={handleChange}
+                        onChange={handleOnChange}
                     />
                 </FieldWrapper>
                 <FieldWrapper>
@@ -80,7 +92,7 @@ export const LinkCreator: React.FunctionComponent = () => {
                         type="color"
                         id="backgroundColor"
                         value={linkParams.backgroundColor}
-                        onChange={handleChange}
+                        onChange={handleOnChange}
                     />
                 </FieldWrapper>
 

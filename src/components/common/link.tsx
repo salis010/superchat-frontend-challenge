@@ -8,8 +8,9 @@ const P = styled.p`
 
 interface ILink {
     url: string
-    isValidUrl: false
+    isValidUrl: boolean
 }
+
 export const Link: React.FunctionComponent<ILink> = ({ url, isValidUrl }) => (
     <P>
         {isValidUrl ? (

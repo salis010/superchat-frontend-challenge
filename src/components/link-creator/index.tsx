@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { PageWrapper, FieldWrapper } from "../common/elements"
 import { PageTitle } from "../common/page-title"
 import { Label } from "../common/label"
+import { Link } from "../common/link"
 import styled from "@emotion/styled"
 
 const H1 = styled.h1`
@@ -9,13 +10,17 @@ const H1 = styled.h1`
 `
 
 export const LinkCreator: React.FunctionComponent = () => {
-    const [linkParams, setLinkParams] = React.useState({
+    const [linkParams, setLinkParams] = useState({
         owner: "",
         repo: "",
         githubIcon: false,
         color: "#000000",
         backgroundColor: "#FFFFFF",
         buttonSize: "small",
+    })
+    const [link, setLink] = useState({
+        url: "Input valid 'Repo Owner' and 'Owner'",
+        isValidUrl: false,
     })
 
     const handleChange = (event) => {
@@ -78,6 +83,9 @@ export const LinkCreator: React.FunctionComponent = () => {
                         onChange={handleChange}
                     />
                 </FieldWrapper>
+
+                <Label text="Link" />
+                <Link url={link.url} isValidUrl={link.isValidUrl} />
             </form>
         </PageWrapper>
     )

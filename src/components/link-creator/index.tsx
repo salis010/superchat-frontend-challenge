@@ -1,16 +1,19 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { PageWrapper, FieldWrapper, H2 } from "../common/elements"
+import { getLink } from "./get-link"
 import { PageTitle } from "../common/page-title"
 import { Label } from "../common/label"
 import { Link } from "../common/link"
 import { Card } from "../card/index"
+import { CONTRIBUTORS_EXAMPLES } from "../common/consts"
 
 export const LinkCreator: React.FunctionComponent = () => {
     const INVALID_URL = "Input valid 'Repo Owner' and 'Owner'"
+    let origin = ""
 
     const [linkParams, setLinkParams] = useState({
-        owner: "salis010",
-        repo: "bingo",
+        owner: "apache",
+        repo: "superset",
         githubIcon: false,
         color: "#000000",
         backgroundColor: "#FFFFFF",
@@ -21,29 +24,44 @@ export const LinkCreator: React.FunctionComponent = () => {
         isValidUrl: false,
     })
 
+    useEffect(() => {
+        origin = window.location.origin
+        updateLink()
+    }, [linkParams])
+
+    const updateLink = () => {
+        if (linkParams.owner && linkParams.repo) {
+            const url = `https://api.github.com/repos/${linkParams.owner}/${linkParams.repo}`
+            fetch(url).then((response) => {
+                if (response.status == 200) {
+                    let contributors
+                    setLink({
+                        url: getLink(origin, linkParams),
+                        isValidUrl: true,
+                    })
+                } else {
+                    setLink({ url: INVALID_URL, isValidUrl: false })
+                }
+            })
+        }
+    }
+
     const handleOnChange = (event) => {
         const value =
             event.target.type === "checkbox"
                 ? event.target.checked
                 : event.target.value
 
-        return setLinkParams({
+        setLinkParams({
             ...linkParams,
             [event.target.id]: value,
         })
+
+        updateLink()
     }
 
     const handleOnBlur = () => {
-        if (linkParams.owner && linkParams.repo) {
-            const url = `https://api.github.com/repos/${linkParams.owner}/${linkParams.repo}`
-            fetch(url).then((response) => {
-                if (response.status == 200) {
-                    setLink({ url, isValidUrl: true })
-                } else {
-                    setLink({ url: INVALID_URL, isValidUrl: false })
-                }
-            })
-        }
+        updateLink()
     }
 
     return (
@@ -120,6 +138,7 @@ export const LinkCreator: React.FunctionComponent = () => {
                         githubIcon={linkParams.githubIcon}
                         description="To be provided"
                         stars={666}
+                        contributors={CONTRIBUTORS_EXAMPLES}
                         buttonSize={linkParams.buttonSize}
                         color={linkParams.color}
                         backgroundColor={linkParams.backgroundColor}

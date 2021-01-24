@@ -10,6 +10,10 @@ app.get('/card', (request, response) => {
 	response.sendFile('card.html', { root: path.join(__dirname, '../dist-frontend') })
 })
 
+app.get('*', (request, response) => {
+	response.sendFile('index.html', { root: path.join(__dirname, '../dist-frontend') })
+})
+
 app.listen(3000, function () {
 	console.log(`Listening on port ${port}...`)
 })

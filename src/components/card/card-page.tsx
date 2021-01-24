@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react"
+import styled from "../../styles/styled"
 import { Card } from "./index"
 import { getContributors } from "./get-contributors"
+import { CONTRIBUTORS_EXAMPLES } from "../common/consts"
+
+const CardPageWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+`
 
 export const CardPage = () => {
     const queryString = window.location.search
@@ -16,7 +24,7 @@ export const CardPage = () => {
         owner: urlParams.get("owner"),
         description: "",
         stars: 0,
-        contributors: ["Placeholder 1", "Placeholder 2", "Placeholder 3"],
+        contributors: CONTRIBUTORS_EXAMPLES,
         githubIcon: urlParams.get("githubIcon") === "true",
         color: "#" + urlParams.get("color"),
         backgroundColor: "#" + urlParams.get("backgroundColor"),
@@ -39,16 +47,18 @@ export const CardPage = () => {
     }, [])
 
     return (
-        <Card
-            repo={details.repo}
-            owner={details.owner}
-            description={details.description}
-            githubIcon={details.githubIcon}
-            stars={details.stars}
-            contributors={details.contributors}
-            color={details.color}
-            backgroundColor={details.backgroundColor}
-            buttonSize={details.buttonSize}
-        />
+        <CardPageWrapper>
+            <Card
+                repo={details.repo}
+                owner={details.owner}
+                description={details.description}
+                githubIcon={details.githubIcon}
+                stars={details.stars}
+                contributors={details.contributors}
+                color={details.color}
+                backgroundColor={details.backgroundColor}
+                buttonSize={details.buttonSize}
+            />
+        </CardPageWrapper>
     )
 }

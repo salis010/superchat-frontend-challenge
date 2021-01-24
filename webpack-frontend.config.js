@@ -4,7 +4,7 @@ const env = process.env.NODE_ENV
 module.exports = {
     entry: {
         index: "./src/index.tsx",
-        card:  "./src/card-page.tsx"
+        card:  "./src/card-page-index.tsx"
     },
     output: {
         filename: "[name]_bundle.js",

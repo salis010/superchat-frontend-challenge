@@ -4,10 +4,14 @@ import { CardHeader } from "./card-header"
 import { StarButton } from "./star-button"
 import { Item } from "./item"
 
+const CardWrapper = styled.div`
+    margin-bottom: 3rem;
+`
+
 const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 3rem;
+    padding: 3rem 3rem 1rem 3rem;
     background-color: ${(props) => props.backgroundColor};
 `
 
@@ -33,9 +37,10 @@ export const Card: React.FunctionComponent<ICard> = ({
     buttonSize,
 }) => {
     return (
-        <div>
+        <CardWrapper>
             <CardHeader
                 title={repo}
+                githubIcon={githubIcon}
                 color={color}
                 backgroundColor={backgroundColor}
             />
@@ -43,12 +48,12 @@ export const Card: React.FunctionComponent<ICard> = ({
                 <Item label="Author" value={owner} color={color} />
                 <Item label="Descritption" value={description} color={color} />
                 <Item label="Stars" value={stars} color={color} />
-                <StarButton
-                    color={color}
-                    backgroundColor={backgroundColor}
-                    buttonSize={buttonSize}
-                />
             </ContentWrapper>
-        </div>
+            <StarButton
+                color={color}
+                backgroundColor={backgroundColor}
+                buttonSize={buttonSize}
+            />
+        </CardWrapper>
     )
 }

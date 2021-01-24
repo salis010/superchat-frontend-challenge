@@ -2,12 +2,13 @@
 	"compilerOptions": {
 		"target": "es5",
 		"module": "es6",
-		"moduleResolution": "node",
+		"moduleResolution": "classic",
 		"lib": ["es6", "dom"],
 		"sourceMap": true,
 		"jsx": "react",
 		"strict": true,
-		"noImplicitAny": false
+		"noImplicitAny": false,
+		"allowSyntheticDefaultImports": true,
 	},
 	"include": ["**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules", "backend"]

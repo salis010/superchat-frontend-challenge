@@ -20,15 +20,15 @@ export const CardPage = () => {
     const url = `https://api.github.com/repos/${owner}/${repo}`
 
     const [details, setDetails] = useState({
-        repo: urlParams.get("repo"),
-        owner: urlParams.get("owner"),
+        repo: urlParams.get("repo") || "N/A",
+        owner: urlParams.get("owner") || "N/A",
         description: "",
         stars: 0,
         contributors: CONTRIBUTORS_EXAMPLES,
         githubIcon: urlParams.get("githubIcon") === "true",
         color: "#" + urlParams.get("color"),
         backgroundColor: "#" + urlParams.get("backgroundColor"),
-        buttonSize: urlParams.get("buttonSize"),
+        buttonSize: urlParams.get("buttonSize") || "medium",
     })
 
     useEffect(() => {

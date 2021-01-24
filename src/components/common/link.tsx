@@ -14,7 +14,7 @@ interface ILink {
 export const Link: React.FunctionComponent<ILink> = ({ url, isValidUrl }) => (
     <P>
         {isValidUrl ? (
-            <a target="_blank" href="url">
+            <a target="_blank" href={url}>
                 {url}
             </a>
         ) : (

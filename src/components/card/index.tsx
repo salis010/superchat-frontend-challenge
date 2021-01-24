@@ -3,8 +3,11 @@ import styled from "../../styles/styled"
 import { CardHeader } from "./card-header"
 import { StarButton } from "./star-button"
 import { Item } from "./item"
+import { ContributorsList } from "./contributors-list"
+import { IContributor } from "../../common/consts"
 
 const CardWrapper = styled.div`
+    max-width: 80rem;
     margin-bottom: 3rem;
 `
 
@@ -20,6 +23,7 @@ interface ICard {
     owner: string
     description: string
     stars: number
+    contributors: IContributor[]
     githubIcon: boolean
     color: string
     backgroundColor: string
@@ -32,6 +36,7 @@ export const Card: React.FunctionComponent<ICard> = ({
     description,
     githubIcon,
     stars,
+    contributors,
     color,
     backgroundColor,
     buttonSize,
@@ -47,7 +52,12 @@ export const Card: React.FunctionComponent<ICard> = ({
             <ContentWrapper backgroundColor={backgroundColor}>
                 <Item label="Author" value={owner} color={color} />
                 <Item label="Descritption" value={description} color={color} />
-                <Item label="Stars" value={stars} color={color} />
+                <Item label="Stars" value={stars.toString()} color={color} />
+                <ContributorsList
+                    label="Top contributors"
+                    list={contributors}
+                    color={color}
+                />
             </ContentWrapper>
             <StarButton
                 color={color}

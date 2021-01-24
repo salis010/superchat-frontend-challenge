@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "../../styles/styled"
 import { FieldWrapper, P } from "../common/elements"
+import { IContributor } from "../../common/consts"
 
 const Ol = styled.ol`
     padding: 0;
@@ -15,29 +16,21 @@ const Li = styled.li`
     margin-bottom: 0.4rem;
 `
 
-interface IContributor {
-    rank: number
-    login: string
-    contributions: string
-}
-
 interface IContributorsList {
     label: string
     list: IContributor[]
     color: string
 }
 
-export const ContributorsList = ({
-    label,
-    list = [],
-    color,
-}: IContributorsList) => (
+export const ContributorsList = ({ label, list, color }: IContributorsList) => (
     <FieldWrapper>
         <P color={color}>{label}:</P>
-        <Ol color={color}>
-            {list.map((list) => (
-                <Li key={list.rank}>{`${list.login} ${list.contributions}`}</Li>
-            ))}
-        </Ol>
+        {list.length > 0 && (
+            <Ol color={color}>
+                {list.map((item, i) => (
+                    <Li key={i}>{`${item.login} ${item.contributions}`}</Li>
+                ))}
+            </Ol>
+        )}
     </FieldWrapper>
 )

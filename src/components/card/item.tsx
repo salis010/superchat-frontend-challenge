@@ -1,13 +1,6 @@
 import * as React from "react"
 import styled from "../../styles/styled"
-import { FieldWrapper } from "../common/elements"
-
-const P = styled.p`
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 0;
-    color: ${(props) => props.color};
-`
+import { FieldWrapper, P } from "../common/elements"
 
 interface IItem {
     label: string

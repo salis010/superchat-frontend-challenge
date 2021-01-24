@@ -12,6 +12,7 @@ const Li = styled.li`
     font-size: 1.4rem;
     font-weight: 600;
     list-style-position: inside;
+    margin-bottom: 0.4rem;
 `
 
 interface IContributor {
@@ -26,7 +27,11 @@ interface IContributorsList {
     color: string
 }
 
-export const ContributorsList = ({ label, list, color }: IContributorsList) => (
+export const ContributorsList = ({
+    label,
+    list = [],
+    color,
+}: IContributorsList) => (
     <FieldWrapper>
         <P color={color}>{label}:</P>
         <Ol color={color}>

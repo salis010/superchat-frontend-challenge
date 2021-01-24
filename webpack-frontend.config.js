@@ -2,10 +2,13 @@ const path = require("path")
 const env = process.env.NODE_ENV
 
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: {
+        index: "./src/index.tsx",
+        card:  "./src/card-page.tsx"
+    },
     output: {
-        path: path.resolve(__dirname, "dist-frontend"),
-        filename: "index_bundle.js"
+        filename: "[name]_bundle.js",
+        path: path.resolve(__dirname, "dist-frontend")
     },
     module: {
         rules: [
@@ -30,6 +33,7 @@ module.exports = {
         extensions: [".tsx", ".ts", ".js"]
     },
     mode: env || 'development',
-    devtool: 'source-map'
+    devtool: 'source-map',
+    watch: true
 }
 

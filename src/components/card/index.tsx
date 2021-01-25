@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "@emotion/styled"
+import styled from "../../styles/styled"
 import { CardHeader } from "./card-header"
 import { StarButton } from "./star-button"
 import { Item } from "./item"

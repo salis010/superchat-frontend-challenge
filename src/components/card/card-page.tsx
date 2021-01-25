@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import styled from "@emotion/styled"
+import * as React from "react"
+import styled from "../../styles/styled"
 import { Card } from "./index"
 import { getContributors } from "./get-contributors"
 import { CONTRIBUTORS_EXAMPLES } from "../common/consts"
@@ -20,7 +20,7 @@ export const CardPage = () => {
 
     const url = `https://api.github.com/repos/${owner}/${repo}`
 
-    const [details, setDetails] = useState({
+    const [details, setDetails] = React.useState({
         repo: urlParams.get("repo") || "N/A",
         owner: urlParams.get("owner") || "N/A",
         description: "",
@@ -32,7 +32,7 @@ export const CardPage = () => {
         buttonSize: urlParams.get("buttonSize") || "medium",
     })
 
-    useEffect(() => {
+    React.useEffect(() => {
         fetch(url)
             .then((response) => response.json())
             .then((data) =>

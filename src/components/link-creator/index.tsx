@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import * as React from "react"
 import { PageWrapper, FieldWrapper, H2 } from "../common/elements"
 import { getLink } from "./get-link"
 import { PageTitle } from "../common/page-title"
@@ -11,7 +11,7 @@ export const LinkCreator: React.FunctionComponent = () => {
     const INVALID_URL = "Input valid 'Repo Owner' and 'Owner'"
     let origin = ""
 
-    const [linkParams, setLinkParams] = useState({
+    const [linkParams, setLinkParams] = React.useState({
         owner: "",
         repo: "",
         githubIcon: false,
@@ -19,12 +19,12 @@ export const LinkCreator: React.FunctionComponent = () => {
         backgroundColor: "#EEEEEE",
         buttonSize: "small",
     })
-    const [link, setLink] = useState({
+    const [link, setLink] = React.useState({
         url: INVALID_URL,
         isValidUrl: false,
     })
 
-    useEffect(() => {
+    React.useEffect(() => {
         origin = window.location.origin
         updateLink()
     }, [
@@ -41,7 +41,7 @@ export const LinkCreator: React.FunctionComponent = () => {
     }
 
     const handleOnChange = (
-        event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+        event: React.ChangeEvent<HTMLInputElement>
     ): void => {
         const value =
             event.target.type === "checkbox"
@@ -54,6 +54,15 @@ export const LinkCreator: React.FunctionComponent = () => {
         })
 
         if (event.target.type !== "text") updateLink()
+    }
+
+    const handleOnSelectChange = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ): void => {
+        setLinkParams({
+            ...linkParams,
+            [event.target.id]: event.target.value,
+        })
     }
 
     const handleOnBlur = () => {
@@ -126,7 +135,7 @@ export const LinkCreator: React.FunctionComponent = () => {
                     <select
                         id="buttonSize"
                         value={linkParams.buttonSize}
-                        onChange={handleOnChange}
+                        onChange={handleOnSelectChange}
                     >
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>

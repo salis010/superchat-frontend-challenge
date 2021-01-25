@@ -1,6 +1,7 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import { ThemeProvider, Global, css } from "@emotion/react"
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import { Global, css } from "@emotion/core"
+import { ThemeProvider } from "emotion-theming"
 import { globalCSS } from "./styles/global-css.js"
 import { theme } from "./styles/theme"
 

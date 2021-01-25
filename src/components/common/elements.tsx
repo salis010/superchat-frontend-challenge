@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from "../../styles/styled"
 
 export const PageWrapper = styled.div`
     margin-left: 4rem;

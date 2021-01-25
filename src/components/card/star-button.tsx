@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "@emotion/styled"
+import styled from "../../styles/styled"
 import { Button } from "./button"
 import { WIDTHS, HEIGHTS, RADII, FONT_SIZES } from "./consts"
 

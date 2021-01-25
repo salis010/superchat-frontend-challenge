@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 import { FieldWrapper, P } from "../common/elements"
 
 interface IItem {

@@ -40,7 +40,9 @@ export const LinkCreator: React.FunctionComponent = () => {
             : setLink({ ...link, url: INVALID_URL })
     }
 
-    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+    ): void => {
         const value =
             event.target.type === "checkbox"
                 ? event.target.checked

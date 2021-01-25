@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 
 const H1 = styled.h1`
     color: ${(props) => props.theme.colors.primary};

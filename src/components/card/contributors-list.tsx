@@ -1,7 +1,7 @@
 import * as React from "react"
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 import { FieldWrapper, P } from "../common/elements"
-import { IContributor } from "../../common/consts"
+import { IContributor } from "../common/consts"
 
 const Ol = styled.ol`
     padding: 0;
@@ -28,7 +28,7 @@ export const ContributorsList = ({ label, list, color }: IContributorsList) => (
         {list.length > 0 && (
             <Ol color={color}>
                 {list.map((item, i) => (
-                    <Li key={i}>{`${item.login} ${item.contributions}`}</Li>
+                    <Li key={i}>{`${item.login} (${item.contributions})`}</Li>
                 ))}
             </Ol>
         )}

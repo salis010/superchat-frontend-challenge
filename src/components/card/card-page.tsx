@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 import { Card } from "./index"
 import { getContributors } from "./get-contributors"
 import { CONTRIBUTORS_EXAMPLES } from "../common/consts"
+import { IContributor } from "../common/consts"
 
 const CardPageWrapper = styled.div`
     display: flex;
@@ -35,14 +36,16 @@ export const CardPage = () => {
         fetch(url)
             .then((response) => response.json())
             .then((data) =>
-                getContributors(data.contributors_url).then((contributors) => {
-                    setDetails({
-                        ...details,
-                        description: data.description,
-                        stars: data.stargazers_count,
-                        contributors: contributors,
+                getContributors(data.contributors_url)
+                    .then((contributors: IContributor[]) => {
+                        setDetails({
+                            ...details,
+                            description: data.description,
+                            stars: data.stargazers_count,
+                            contributors,
+                        })
                     })
-                })
+                    .catch((err) => console.log(err))
             )
     }, [])
 

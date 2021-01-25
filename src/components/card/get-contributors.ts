@@ -1,3 +1,5 @@
+import { IContributor } from "../common/consts"
+
 const sortData = (data) => data.sort((a, b) => b.contributions - a.contributions)
 
 const filterData = (data, fieldNames) => 
@@ -7,7 +9,7 @@ const getTopN = (data, n) => data.slice(0, n)
 
 export const getContributors = (url) => {
 
-    return new Promise((resolve, reject) => {
+    return new Promise<IContributor[]>((resolve, reject) => {
         fetch(url)
             .then(response => {
                 if(response.status == 200) {
@@ -17,7 +19,7 @@ export const getContributors = (url) => {
                         .then(data => getTopN(data, 10))
                         .then(data => resolve(data))
                 } else {
-                    reject("error in getting contributors")
+                    reject(new Error("error in getting contributors"))
                 }
             })
         })

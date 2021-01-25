@@ -1,17 +1,22 @@
 import * as React from "react"
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 import { CardHeader } from "./card-header"
 import { StarButton } from "./star-button"
 import { Item } from "./item"
 import { ContributorsList } from "./contributors-list"
-import { IContributor } from "../../common/consts"
+import { IContributor } from "../common/consts"
+
+type ContentWrapper = {
+    backgroundColor: string
+}
 
 const CardWrapper = styled.div`
+    min-width: 50rem;
     max-width: 80rem;
     margin-bottom: 3rem;
 `
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<ContentWrapper>`
     display: flex;
     flex-direction: column;
     padding: 3rem 3rem 1rem 3rem;

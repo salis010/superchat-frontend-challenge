@@ -1,6 +1,15 @@
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 
-export const Button = styled.button`
+type ButtonProps = {
+    fontSize: string
+    width: string
+    height: string
+    color: string
+    backgroundColor: string
+    radius: string
+}
+
+export const Button = styled.button<ButtonProps>`
     font-size: ${(props) => props.fontSize};
     font-weight: 800;
     width: ${(props) => props.width};

@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 
 const P = styled.p`
     font-size: 1.2rem;

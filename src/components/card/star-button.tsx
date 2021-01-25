@@ -1,9 +1,13 @@
 import * as React from "react"
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 import { Button } from "./button"
 import { WIDTHS, HEIGHTS, RADII, FONT_SIZES } from "./consts"
 
-const ButtonWrapper = styled.div`
+type ButtonWrapper = {
+    backgroundColor: string
+}
+
+const ButtonWrapper = styled.div<ButtonWrapper>`
     display: flex;
     align-items: center;
     justify-content: center;

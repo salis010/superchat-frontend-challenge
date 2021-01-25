@@ -1,8 +1,12 @@
 import * as React from "react"
-import styled from "../../styles/styled"
+import styled from "@emotion/styled"
 import githubLogo from "../../assets/github-logo.png"
 
-const HeaderWrapper = styled.div`
+type HeaderWrapperTypes = {
+    backgroundColor: string
+}
+
+const HeaderWrapper = styled.div<HeaderWrapperTypes>`
     display: flex;
     justify-content: space-between;
     align-items: center;

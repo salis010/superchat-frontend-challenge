@@ -34,6 +34,5 @@ module.exports = {
     },
     mode: env || 'development',
     devtool: 'source-map',
-    watch: true
 }
 

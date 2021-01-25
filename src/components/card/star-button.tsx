@@ -7,6 +7,10 @@ type ButtonWrapper = {
     backgroundColor: string
 }
 
+const A = styled.a`
+    text-decoration: none;
+`
+
 const ButtonWrapper = styled.div<ButtonWrapper>`
     display: flex;
     align-items: center;
@@ -17,12 +21,14 @@ const ButtonWrapper = styled.div<ButtonWrapper>`
 `
 
 interface IStarButton {
+    url: string
     color: string
     backgroundColor: string
     buttonSize: string
 }
 
 export const StarButton = ({
+    url,
     color,
     backgroundColor,
     buttonSize,
@@ -34,16 +40,18 @@ export const StarButton = ({
 
     return (
         <ButtonWrapper backgroundColor={backgroundColor}>
-            <Button
-                color={color}
-                backgroundColor={backgroundColor}
-                fontSize={fontSize}
-                width={width}
-                height={height}
-                radius={radius}
-            >
-                Star
-            </Button>
+            <A target="_blank" href={url}>
+                <Button
+                    color={color}
+                    backgroundColor={backgroundColor}
+                    fontSize={fontSize}
+                    width={width}
+                    height={height}
+                    radius={radius}
+                >
+                    Star
+                </Button>
+            </A>
         </ButtonWrapper>
     )
 }

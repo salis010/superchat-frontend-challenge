@@ -9,7 +9,10 @@ type ButtonProps = {
     radius: string
 }
 
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.div<ButtonProps>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: ${(props) => props.fontSize};
     font-weight: 800;
     width: ${(props) => props.width};

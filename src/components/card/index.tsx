@@ -46,6 +46,8 @@ export const Card: React.FunctionComponent<ICard> = ({
     backgroundColor,
     buttonSize,
 }) => {
+    const githubUrl = `https://github.com/${owner}/${repo}`
+
     return (
         <CardWrapper>
             <CardHeader
@@ -65,6 +67,7 @@ export const Card: React.FunctionComponent<ICard> = ({
                 />
             </ContentWrapper>
             <StarButton
+                url={githubUrl}
                 color={color}
                 backgroundColor={backgroundColor}
                 buttonSize={buttonSize}

@@ -1,5 +1,6 @@
 import * as React from "react"
 import styled from "../../styles/styled"
+import Favicon from "react-favicon"
 import { Card } from "./index"
 import { getContributors } from "./get-contributors"
 import { CONTRIBUTORS_EXAMPLES } from "../common/consts"
@@ -51,6 +52,7 @@ export const CardPage = () => {
 
     return (
         <CardPageWrapper>
+            <Favicon url="../../../favicon.png" />
             <Card
                 repo={details.repo}
                 owner={details.owner}

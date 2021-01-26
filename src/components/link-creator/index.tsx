@@ -15,7 +15,7 @@ export const LinkCreator: React.FunctionComponent = () => {
         owner: "",
         repo: "",
         githubIcon: false,
-        color: "#000000",
+        color: "#4267B2",
         backgroundColor: "#EEEEEE",
         buttonSize: "small",
     })

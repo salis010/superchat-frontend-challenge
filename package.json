@@ -11,7 +11,7 @@
         "clean:backend": "rimraf dist-backend",
         "clean:frontend": "rimraf dist-frontend/*.js*",
         "server": "nodemon dist-backend/backend_bundle.js",
-        "start": "npm run build && npm run server",
+        "start": "node dist-backend/backend_bundle.js",
         "watch:frontend": "webpack --config webpack-frontend.config.js --watch",
         "watch:backend": "webpack --config webpack-backend.config.js --watch"
     },
